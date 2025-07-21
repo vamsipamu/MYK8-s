@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpadeployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: uber
+  template:
+    metadata:
+      labels:
+        app: uber
+    spec:
+      containers:
+        - name: hpacont
+          image: nginx 
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "500m"  
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: depsvc2
+spec:
+  type: LoadBalancer
+  selector:
+    app: uber
+  ports:
+    - port: 80
+      targetPort: 80
+

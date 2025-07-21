@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myrs
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kki
+  template:
+    metadata:
+      labels:
+        app: kki
+    spec:
+      containers:
+        - name: myrscont
+          image: nginx
+          ports:
+            - containerPort: 80
+

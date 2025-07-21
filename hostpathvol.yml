@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mydephostvol
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rapido
+  template:
+    metadata:
+      labels:
+        app: rapido
+    spec:
+      containers:
+        - name: volcont1
+          image: ubuntu
+          command: ["/bin/bash/", "-c", "while true; do echo thisnis my insane practice; sleep 5; done"] 
+          volumeMounts:
+            - name: devops
+              mountPath: "/tmp/jenkins"
+  
+  
+        - name: volcont2
+          image: debian
+          command: ["/bin/bash/", "-c", "while true; do echo thisnis my insane practice; sleep 5; done"] 
+          volumeMounts:
+            - name: devops
+              mountPath: "/opt/jenkins"
+
+      volumes:
+        - name: devops
+          hostPath:      
+            path: /tmp/jenini
+  
