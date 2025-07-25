@@ -90,4 +90,15 @@ pv & pvc:
 pv: A Persistent Volume is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using StorageClasses
 pvc :A Persistent Volume Claim is a request for storage by a user. It specifies size, access modes, and optionally a storageClassName.
 
+User creates a PVC.
+Kubernetes searches for a matching PV.
+If found, it binds the PVC to the PV.
+If not found and dynamic provisioning is enabled, it creates a new PV.
+The pod uses the PVC to mount the volume.
+
+ Access Modes
+ReadWriteOnce (RWO): Mounted as read-write by a single node.
+ReadOnlyMany (ROX): Mounted as read-only by many nodes.
+ReadWriteMany (RWX): Mounted as read-write by many nodes.
+
 
