@@ -86,4 +86,8 @@ kube-proxy intercepts the request
 It forwards to one of the pods selected by the service
 
 
+pv & pvc:
+pv: A Persistent Volume is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using StorageClasses
+pvc :A Persistent Volume Claim is a request for storage by a user. It specifies size, access modes, and optionally a storageClassName.
+
 
